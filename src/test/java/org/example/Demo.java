@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class Demo {
 
@@ -44,6 +45,21 @@ public class Demo {
 		List<WebElement> webElementsNotExit = driver.findElements(By.cssSelector(".not-exist"));
 		System.out.println(webElementsNotExit.size());
 
+		Select select = new Select(driver.findElement(By.cssSelector("#select-menu")));
+		select.selectByValue("3");
+
+		select.selectByVisibleText("0-1");
+
+		select.selectByIndex(4);
+
+		List<WebElement> options = select.getOptions();
+
+
+		// set a textbox
+		driver.findElement(By.cssSelector("#first-name")).sendKeys("Testing");
+
+
+
 //		driver.close();
 		driver.quit();
 
@@ -59,6 +75,43 @@ public class Demo {
 //		By.cssSelector()
 //		By.xpath()
 
+	}
+
+	@Test
+	public void demoSchoology() {
+		WebDriverManager.chromedriver().setup();
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.get("https://app.schoology.com/login");
+
+		driver.findElement(By.cssSelector("#edit-mail")).sendKeys("carledriss+01@gmail.com");
+		driver.findElement(By.cssSelector("#edit-pass")).sendKeys("P@ssw0rd");
+		driver.findElement(By.cssSelector("#edit-submit")).click();
+
+		driver.findElement(By.xpath("//span[text()='Courses']/parent::button")).click();
+
+		driver.findElement(By.cssSelector("a[href='/courses']")).click();
+
+		driver.findElement(By.cssSelector("a.create-course-btn")).click();
+
+		String courseName = "Test Course";
+		driver.findElement(By.cssSelector("#edit-course-name")).sendKeys(courseName);
+		WebElement sectionField = driver.findElement(By.cssSelector("#edit-section-name-1"));
+		sectionField.clear();
+		sectionField.sendKeys("Section");
+		Select subjectArea = new Select(driver.findElement(By.cssSelector("#edit-subject-area")));
+		subjectArea.selectByVisibleText("Mathematics");
+		Select level = new Select(driver.findElement(By.cssSelector("#edit-grade-level-range-start")));
+		level.selectByVisibleText("Undergraduate");
+
+		driver.findElement(By.cssSelector("#edit-submit")).click();
+
+		driver.findElement(By.xpath("//span[text()='Courses']/parent::button")).click();
+
+		driver.findElement(By.cssSelector("a[href='/courses']")).click();
+
+		String courseActions = "//span[text()='%s']/ancestor::li//div[@class='action-links-unfold ']";
+		driver.findElement(By.xpath(String.format(courseActions, courseName))).click();
 	}
 
 }
