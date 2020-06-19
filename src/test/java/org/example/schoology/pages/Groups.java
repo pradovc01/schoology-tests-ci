@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Groups extends ViewList {
 
@@ -25,6 +26,7 @@ public class Groups extends ViewList {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", groupActionsButton);
 
+        wait.until(ExpectedConditions.visibilityOf(groupActionsButton));
         groupActionsButton.click();
         driver.findElement(By.xpath(String.format(SELECT_ACTIONS, groupName))).click();
         return new EditGroupPopup();
