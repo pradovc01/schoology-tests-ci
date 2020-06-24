@@ -3,6 +3,7 @@ package org.example.schoology.steps;
 import java.util.Map;
 
 import io.cucumber.java.en.And;
+import org.example.Internationalization;
 import org.example.SharedDriver;
 import org.example.schoology.pages.Course;
 import org.example.schoology.pages.Courses;
@@ -30,7 +31,7 @@ public class CourseStepDefs {
 
     @And("I create a course with:")
     public void iCreateACourseWith(Map<String, String> datatable) {
-        String menu = "Courses";
+        String menu = Internationalization.getInstance().getValue("menu");
         subMenu = home.clickMenu(menu);
         subMenu.clickViewListLink(menu);
         CreateCoursePopup createCoursePopup = this.courses.clickCreateCourseButton();

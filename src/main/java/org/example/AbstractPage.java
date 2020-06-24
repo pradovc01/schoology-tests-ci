@@ -15,10 +15,13 @@ public abstract class AbstractPage {
 
     protected WebDriverWait wait;
 
+    protected WebdriverAction action;
+
     public AbstractPage() {
         this.driver = DriverFactory.getDriver();
         driver.manage().timeouts().implicitlyWait(DEFAULT_IMPLICIT_TIMEOUT, TimeUnit.SECONDS);
         this.wait = new WebDriverWait(driver, EXPLICIT_WAIT_IN_SECONDS);
+        this.action = new WebdriverAction(driver, wait);
         PageFactory.initElements(driver, this);
     }
 }

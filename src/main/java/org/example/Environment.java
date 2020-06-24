@@ -1,7 +1,6 @@
 package org.example;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -24,11 +23,7 @@ public class Environment {
             Reader fileReader = new InputStreamReader(inputStream);
             JSONObject jsonObject = (JSONObject) new JSONParser().parse(fileReader);
             jsonContext = JsonPath.parse(jsonObject);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }
