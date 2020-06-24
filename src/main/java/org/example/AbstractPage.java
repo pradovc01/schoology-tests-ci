@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class AbstractPage {
 
     public static final int DEFAULT_IMPLICIT_TIMEOUT = 15;
+    public static final int EXPLICIT_WAIT_IN_SECONDS = 20;
 
     protected WebDriver driver;
 
@@ -17,7 +18,7 @@ public abstract class AbstractPage {
     public AbstractPage() {
         this.driver = DriverFactory.getDriver();
         driver.manage().timeouts().implicitlyWait(DEFAULT_IMPLICIT_TIMEOUT, TimeUnit.SECONDS);
-        this.wait = new WebDriverWait(driver, 20);
+        this.wait = new WebDriverWait(driver, EXPLICIT_WAIT_IN_SECONDS);
         PageFactory.initElements(driver, this);
     }
 }

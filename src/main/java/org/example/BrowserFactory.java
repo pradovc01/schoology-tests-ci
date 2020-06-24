@@ -6,7 +6,10 @@ import java.util.function.Supplier;
 
 import org.openqa.selenium.WebDriver;
 
-public class BrowserFactory {
+public final class BrowserFactory {
+
+    private BrowserFactory() {
+    }
 
     private static final Map<String, Supplier<AbstractBrowser>> BROWSERS = new HashMap<>();
 
@@ -16,7 +19,7 @@ public class BrowserFactory {
         BROWSERS.put("headless", Headless::new);
     }
 
-    public static WebDriver getBrowser(String browser) {
+    public static WebDriver getBrowser(final String browser) {
         return BROWSERS.getOrDefault(browser, Chrome::new).get().init();
     }
 
