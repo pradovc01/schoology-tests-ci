@@ -15,34 +15,34 @@ import org.testng.Assert;
 
 public class GroupStepDefs {
 
-	private SubMenu subMenu;
+    private SubMenu subMenu;
 
-	private Courses courses;
+    private Courses courses;
 
-	private Groups groups;
+    private Groups groups;
 
-	public GroupStepDefs(SharedDriver sharedDriver, Groups groups) {
-		this.groups = groups;
-	}
+    public GroupStepDefs(SharedDriver sharedDriver, Groups groups) {
+        this.groups = groups;
+    }
 
-	@And("I create a group with:")
-	public void iCreateAGroupWith(Map<String, String> datatable) {
-		String menu = "Groups";
-		subMenu = new Home().clickMenu(menu);
-		subMenu.clickViewListLink(menu);
-		CreateGroupPopup createGroupPopup = this.groups.clickCreateGroupButton();
-		Group group = createGroupPopup.fillInTheFieldsAndCreate(datatable);
-	}
+    @And("I create a group with:")
+    public void iCreateAGroupWith(Map<String, String> datatable) {
+        String menu = "Groups";
+        subMenu = new Home().clickMenu(menu);
+        subMenu.clickViewListLink(menu);
+        CreateGroupPopup createGroupPopup = this.groups.clickCreateGroupButton();
+        Group group = createGroupPopup.fillInTheFieldsAndCreate(datatable);
+    }
 
-	@And("I edit the {string} group with:")
-	public void iEditTheGroupWith(String Name, Map<String, String> datatable) {
-		EditGroupPopup editGroupPopup = groups.clickEditGroup(Name);
-		editGroupPopup.fillInTheFieldsAndEdit(datatable);
-	}
+    @And("I edit the {string} group with:")
+    public void iEditTheGroupWith(String Name, Map<String, String> datatable) {
+        EditGroupPopup editGroupPopup = groups.clickEditGroup(Name);
+        editGroupPopup.fillInTheFieldsAndEdit(datatable);
+    }
 
-	@And("I should see a group with {string} as a name")
-	public void iShouldSeeAGroupWithAsName(String groupName) {
-		Assert.assertEquals(groupName, groups.getGroupByName(groupName));
-	}
+    @And("I should see a group with {string} as a name")
+    public void iShouldSeeAGroupWithAsName(String groupName) {
+        Assert.assertEquals(groupName, groups.getGroupByName(groupName));
+    }
 
 }
