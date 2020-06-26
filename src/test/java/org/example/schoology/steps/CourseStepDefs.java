@@ -3,18 +3,20 @@ package org.example.schoology.steps;
 import java.util.Map;
 
 import io.cucumber.java.en.And;
-import org.example.Internationalization;
-import org.example.SharedDriver;
-import org.example.schoology.pages.Course;
-import org.example.schoology.pages.Courses;
-import org.example.schoology.pages.CreateCoursePopup;
-import org.example.schoology.pages.EditCoursePopup;
-import org.example.schoology.pages.Groups;
+import org.example.core.Internationalization;
+import org.example.core.ScenarioContext;
+import org.example.core.ui.SharedDriver;
+import org.example.schoology.pages.courses.Courses;
+import org.example.schoology.pages.courses.CreateCoursePopup;
+import org.example.schoology.pages.courses.EditCoursePopup;
+import org.example.schoology.pages.groups.Groups;
 import org.example.schoology.pages.Home;
 import org.example.schoology.pages.SubMenu;
 import org.testng.Assert;
 
 public class CourseStepDefs {
+
+    private ScenarioContext context;
 
     private SubMenu subMenu;
 
@@ -24,8 +26,10 @@ public class CourseStepDefs {
 
     private Home home;
 
-    public CourseStepDefs(final SharedDriver sharedDriver, final Home home, final Courses courses) {
-        this.home = home;
+    public CourseStepDefs(final SharedDriver sharedDriver, final ScenarioContext context,
+                          final Courses courses) {
+        this.context = context;
+        this.home = new Home();
         this.courses = courses;
     }
 
@@ -35,7 +39,8 @@ public class CourseStepDefs {
         subMenu = home.clickMenu(menu);
         subMenu.clickViewListLink(menu);
         CreateCoursePopup createCoursePopup = this.courses.clickCreateCourseButton();
-        Course course = createCoursePopup.create(datatable);
+        createCoursePopup.create(datatable);
+        context.setContext("CourseKey", datatable.get("name"));
     }
 
     @And("I edit the {string} course with:")

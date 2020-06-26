@@ -1,5 +1,6 @@
-package org.example;
+package org.example.core.ui;
 
+import org.example.core.Environment;
 import org.openqa.selenium.WebDriver;
 
 public class SharedDriver {

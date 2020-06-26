@@ -1,4 +1,4 @@
-package org.example;
+package org.example.core.ui;
 
 import java.util.HashMap;
 import java.util.Map;

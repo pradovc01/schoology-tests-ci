@@ -1,5 +1,6 @@
-package org.example.schoology.pages;
+package org.example.schoology.pages.groups;
 
+import org.example.schoology.pages.ViewList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;

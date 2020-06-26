@@ -3,12 +3,12 @@ package org.example.schoology.steps;
 import java.util.Map;
 
 import io.cucumber.java.en.And;
-import org.example.SharedDriver;
-import org.example.schoology.pages.Courses;
-import org.example.schoology.pages.CreateGroupPopup;
-import org.example.schoology.pages.EditGroupPopup;
-import org.example.schoology.pages.Group;
-import org.example.schoology.pages.Groups;
+import org.example.core.ui.SharedDriver;
+import org.example.schoology.pages.courses.Courses;
+import org.example.schoology.pages.groups.CreateGroupPopup;
+import org.example.schoology.pages.groups.EditGroupPopup;
+import org.example.schoology.pages.groups.Group;
+import org.example.schoology.pages.groups.Groups;
 import org.example.schoology.pages.Home;
 import org.example.schoology.pages.SubMenu;
 import org.testng.Assert;
