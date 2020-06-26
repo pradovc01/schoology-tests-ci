@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 public class SubMenu extends AbstractPage {
 
     public void clickViewListLink(final String menu) {
-        driver.findElement(By.cssSelector(String.format("a[href='/%s']", menu.toLowerCase()))).click();
+        action.click(By.cssSelector(String.format("a[href='/%s']", menu.toLowerCase())));
     }
 
 }
