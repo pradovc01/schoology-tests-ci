@@ -24,13 +24,13 @@ public class CourseStepDefs {
 
     private Home home;
 
-    public CourseStepDefs(SharedDriver sharedDriver, Home home, Courses courses) {
+    public CourseStepDefs(final SharedDriver sharedDriver, final Home home, final Courses courses) {
         this.home = home;
         this.courses = courses;
     }
 
     @And("I create a course with:")
-    public void iCreateACourseWith(Map<String, String> datatable) {
+    public void iCreateACourseWith(final Map<String, String> datatable) {
         String menu = Internationalization.getInstance().getValue("menu");
         subMenu = home.clickMenu(menu);
         subMenu.clickViewListLink(menu);
@@ -39,13 +39,13 @@ public class CourseStepDefs {
     }
 
     @And("I edit the {string} course with:")
-    public void iEditTheCourseWith(String Name, Map<String, String> datatable) {
-        EditCoursePopup editCoursePopup = courses.clickEditCourse(Name);
+    public void iEditTheCourseWith(final String name, final Map<String, String> datatable) {
+        EditCoursePopup editCoursePopup = courses.clickEditCourse(name);
         courses = editCoursePopup.edit(datatable);
     }
 
     @And("I should see the {string} section on {string} course item")
-    public void iShouldSeeTheSectionOnCourseItem(String expectedSection, String courseName) {
+    public void iShouldSeeTheSectionOnCourseItem(final String expectedSection, final String courseName) {
         Assert.assertEquals(expectedSection, courses.getSectionByName(courseName));
     }
 

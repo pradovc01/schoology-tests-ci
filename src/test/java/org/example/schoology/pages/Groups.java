@@ -13,14 +13,14 @@ public class Groups extends ViewList {
     public static final String GROUP_BY_NAME = "//a[text()='%s']";
 
     @FindBy(css = "a.create-group")
-    private WebElement CreateGroupButton;
+    private WebElement createGroupButton;
 
-    public CreateGroupPopup clickCreateGroupButton(){
-        CreateGroupButton.click();
+    public CreateGroupPopup clickCreateGroupButton() {
+        createGroupButton.click();
         return new CreateGroupPopup();
     }
 
-    public EditGroupPopup clickEditGroup(String groupName) {
+    public EditGroupPopup clickEditGroup(final String groupName) {
         WebElement groupActionsButton = driver.findElement(By.xpath(String.format(GROUP_ACTIONS_BUTTON, groupName)));
         // Scroll
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -32,7 +32,7 @@ public class Groups extends ViewList {
         return new EditGroupPopup();
     }
 
-    public String getGroupByName(String groupName) {
+    public String getGroupByName(final String groupName) {
         return driver.findElement(By.xpath(String.format(GROUP_BY_NAME, groupName))).getText();
     }
 

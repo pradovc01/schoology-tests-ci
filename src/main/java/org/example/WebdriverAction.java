@@ -12,27 +12,27 @@ public class WebdriverAction {
 
     private WebDriverWait wait;
 
-    public WebdriverAction(WebDriver driver, WebDriverWait wait) {
+    public WebdriverAction(final WebDriver driver, final WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
     }
 
-    public void click(WebElement webElement) {
+    public void click(final WebElement webElement) {
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
 
-    public void click(By locator) {
+    public void click(final By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator))
                 .click();
     }
 
-    public String getText(WebElement webElement) {
+    public String getText(final WebElement webElement) {
         wait.until(ExpectedConditions.visibilityOf(webElement));
         return webElement.getText();
     }
 
-    public String getText(By locator) {
+    public String getText(final By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
     }
 }

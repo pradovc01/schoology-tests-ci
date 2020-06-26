@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 
-public class DriverFactory {
+public final class DriverFactory {
 
     private static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
 
@@ -15,7 +15,10 @@ public class DriverFactory {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> storedDrivers.forEach(WebDriver::quit)));
     }
 
-    public static void addDriver(WebDriver driver) {
+    private DriverFactory() {
+    }
+
+    public static void addDriver(final WebDriver driver) {
         drivers.set(driver);
         storedDrivers.add(driver);
     }

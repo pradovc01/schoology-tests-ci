@@ -12,9 +12,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class Environment {
+public final class Environment {
 
-    private static Environment instance = new Environment();
+    private static final Environment INSTANCE = new Environment();
 
     private DocumentContext jsonContext;
 
@@ -29,10 +29,10 @@ public class Environment {
     }
 
     public static Environment getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
-    public String getValue(String keyJsonPath) {
+    public String getValue(final String keyJsonPath) {
         return jsonContext.read(keyJsonPath);
     }
 

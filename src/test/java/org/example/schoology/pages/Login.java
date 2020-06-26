@@ -32,11 +32,11 @@ public class Login extends AbstractPage {
 
 
     // Todo
-    public Home loginAs(String username, String password) {
+    public Home loginAs(final String username, final String pass) {
         driver.manage().deleteAllCookies();
         driver.get("https://app.schoology.com/login");
         usernameTextField.sendKeys(username);
-        passwordTextField.sendKeys(password);
+        passwordTextField.sendKeys(pass);
         loginButton.click();
         verifyYourAccount();
         return new Home();

@@ -25,41 +25,34 @@ public abstract class AbstractCoursePopup extends AbstractPage {
     @FindBy(css = "#edit-submit")
     protected WebElement submitButton;
 
-    public void fill(Map<String, String> courseMap) {
+    public void fill(final Map<String, String> courseMap) {
         Map<String, Step> stepsMap = new HashMap<>();
         stepsMap.put("name", () -> setName(courseMap.get("name")));
         stepsMap.put("section", () -> setSection(courseMap.get("section")));
         stepsMap.put("area", () -> selectSubjectArea(courseMap.get("area")));
         stepsMap.put("level", () -> selectLevel(courseMap.get("level")));
 
-        for (String keyField : courseMap.keySet()) {
+        for (final String keyField : courseMap.keySet()) {
             stepsMap.get(keyField).execute();
         }
-        // TODO
-        // web element is not removed but is added a display none
-//		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".course-create-popup")));
-//
-//		// tag element is removed
-        // loading
-//		wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.cssSelector(".course-create-popup"))));
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         courseNameTextField.sendKeys(name);
     }
 
-    private void setSection(String section) {
+    private void setSection(final String section) {
         WebElement sectionField = sectionNameTextField;
         sectionField.clear();
         sectionField.sendKeys(section);
     }
 
-    public void selectSubjectArea(String area) {
+    public void selectSubjectArea(final String area) {
         Select subjectArea = new Select(subjectAreaDropDown);
         subjectArea.selectByVisibleText(area);
     }
 
-    public void selectLevel(String level) {
+    public void selectLevel(final String level) {
         Select levelField = new Select(levelDropDown);
         levelField.selectByVisibleText(level);
     }

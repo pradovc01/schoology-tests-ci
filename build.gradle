@@ -35,10 +35,6 @@ dependencies {
 
 }
 
-test {
-    useTestNG()
-}
-
 task runFeatures (type: Test) {
     useTestNG()
     options {

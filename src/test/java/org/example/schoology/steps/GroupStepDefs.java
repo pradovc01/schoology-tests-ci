@@ -15,33 +15,31 @@ import org.testng.Assert;
 
 public class GroupStepDefs {
 
-    private SubMenu subMenu;
-
     private Courses courses;
 
-    private Groups groups;
+    private final Groups groups;
 
-    public GroupStepDefs(SharedDriver sharedDriver, Groups groups) {
+    public GroupStepDefs(final SharedDriver sharedDriver, final Groups groups) {
         this.groups = groups;
     }
 
     @And("I create a group with:")
-    public void iCreateAGroupWith(Map<String, String> datatable) {
+    public void iCreateAGroupWith(final Map<String, String> datatable) {
         String menu = "Groups";
-        subMenu = new Home().clickMenu(menu);
+        SubMenu subMenu = new Home().clickMenu(menu);
         subMenu.clickViewListLink(menu);
         CreateGroupPopup createGroupPopup = this.groups.clickCreateGroupButton();
-        Group group = createGroupPopup.fillInTheFieldsAndCreate(datatable);
+        Group group = createGroupPopup.create(datatable);
     }
 
     @And("I edit the {string} group with:")
-    public void iEditTheGroupWith(String Name, Map<String, String> datatable) {
-        EditGroupPopup editGroupPopup = groups.clickEditGroup(Name);
-        editGroupPopup.fillInTheFieldsAndEdit(datatable);
+    public void iEditTheGroupWith(final String name, final Map<String, String> datatable) {
+        EditGroupPopup editGroupPopup = groups.clickEditGroup(name);
+        editGroupPopup.edit(datatable);
     }
 
     @And("I should see a group with {string} as a name")
-    public void iShouldSeeAGroupWithAsName(String groupName) {
+    public void iShouldSeeAGroupWithAsName(final String groupName) {
         Assert.assertEquals(groupName, groups.getGroupByName(groupName));
     }
 

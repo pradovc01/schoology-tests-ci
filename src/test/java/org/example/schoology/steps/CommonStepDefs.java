@@ -17,25 +17,25 @@ public class CommonStepDefs {
 
     private SubMenu subMenu;
 
-    public CommonStepDefs(SharedDriver sharedDriver) {
+    public CommonStepDefs(final SharedDriver sharedDriver) {
 
     }
 
     @Given("I log in as {string} user")
-    public void iLogInAsUser(String account) {
+    public void iLogInAsUser(final String account) {
         Login login = new Login();
         home = login.loginAs(Environment.getInstance().getValue(String.format("credentials.%s.username", account)),
                 Environment.getInstance().getValue(String.format("credentials.%s.password", account)));
     }
 
     @When("I navigate to {string}")
-    public void iNavigateToCourses(String menu) {
+    public void iNavigateToCourses(final String menu) {
         subMenu = home.clickMenu(menu);
         subMenu.clickViewListLink(menu);
     }
 
     @Then("I should see the {string} message")
-    public void iShouldSeeTheMessage(String message) {
+    public void iShouldSeeTheMessage(final String message) {
         Assert.assertEquals(message, new ViewList().getMessage());
     }
 

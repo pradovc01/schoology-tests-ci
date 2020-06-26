@@ -4,15 +4,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Internationalization {
+public final class Internationalization {
 
-    private static Internationalization instance = new Internationalization();
+    private static final Internationalization INSTANCE = new Internationalization();
 
     private Properties properties;
 
     private Internationalization() {
-        try (FileInputStream fileInputStream = new FileInputStream(String.format("src/test/resources/i18n/Variables_%s.properties",
-                Environment.getInstance().getValue("language")))) {
+        String language = String.format("src/test/resources/i18n/Variables_%s.properties",
+                Environment.getInstance().getValue("language"));
+        try (FileInputStream fileInputStream = new FileInputStream(language)) {
             properties = new Properties();
             properties.load(fileInputStream);
         } catch (IOException e) {
@@ -21,10 +22,10 @@ public class Internationalization {
     }
 
     public static Internationalization getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
-    public String getValue(String value) {
+    public String getValue(final String value) {
         return properties.getProperty(value);
     }
 
