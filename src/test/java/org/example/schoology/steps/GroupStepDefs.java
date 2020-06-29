@@ -3,23 +3,25 @@ package org.example.schoology.steps;
 import java.util.Map;
 
 import io.cucumber.java.en.And;
+import org.example.core.AssertionGroup;
 import org.example.core.ui.SharedDriver;
-import org.example.schoology.pages.courses.Courses;
+import org.example.schoology.pages.Home;
+import org.example.schoology.pages.SubMenu;
 import org.example.schoology.pages.groups.CreateGroupPopup;
 import org.example.schoology.pages.groups.EditGroupPopup;
 import org.example.schoology.pages.groups.Group;
 import org.example.schoology.pages.groups.Groups;
-import org.example.schoology.pages.Home;
-import org.example.schoology.pages.SubMenu;
-import org.testng.Assert;
+import org.testng.asserts.Assertion;
 
 public class GroupStepDefs {
 
-    private Courses courses;
-
     private final Groups groups;
 
-    public GroupStepDefs(final SharedDriver sharedDriver, final Groups groups) {
+    private Assertion assertion;
+
+    public GroupStepDefs(final SharedDriver sharedDriver, final AssertionGroup assertionGroup,
+                         final Groups groups) {
+        assertion = assertionGroup.getAssertion();
         this.groups = groups;
     }
 
@@ -40,7 +42,7 @@ public class GroupStepDefs {
 
     @And("I should see a group with {string} as a name")
     public void iShouldSeeAGroupWithAsName(final String groupName) {
-        Assert.assertEquals(groupName, groups.getGroupByName(groupName));
+        assertion.assertEquals(groupName, groups.getGroupByName(groupName));
     }
 
 }

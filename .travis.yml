@@ -9,9 +9,8 @@ before_script:
 - export PATH=$GRADLE_HOME/bin:$PATH
 script:
 #  static code analysis
-- gradle clean check
-
 #  run unit test for automation framework
+- gradle clean check
 
 #  run bdd test
 - gradle runFeatures

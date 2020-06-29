@@ -3,22 +3,23 @@ package org.example.schoology.steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.example.core.AssertionGroup;
 import org.example.core.Environment;
 import org.example.core.ui.SharedDriver;
 import org.example.schoology.pages.Home;
 import org.example.schoology.pages.Login;
 import org.example.schoology.pages.SubMenu;
 import org.example.schoology.pages.ViewList;
-import org.testng.Assert;
+import org.testng.asserts.Assertion;
 
 public class CommonStepDefs {
 
+    private final Assertion assertion;
+
     private Home home;
 
-    private SubMenu subMenu;
-
-    public CommonStepDefs(final SharedDriver sharedDriver) {
-
+    public CommonStepDefs(final SharedDriver sharedDriver, final AssertionGroup assertionGroup) {
+        assertion = assertionGroup.getAssertion();
     }
 
     @Given("I log in as {string} user")
@@ -30,13 +31,15 @@ public class CommonStepDefs {
 
     @When("I navigate to {string}")
     public void iNavigateToCourses(final String menu) {
-        subMenu = home.clickMenu(menu);
+        SubMenu subMenu = home.clickMenu(menu);
+        // Not put logic
+        // for instance: if else, loops read files, handles strings, mathematical operations.
         subMenu.clickViewListLink(menu);
     }
 
     @Then("I should see the {string} message")
     public void iShouldSeeTheMessage(final String message) {
-        Assert.assertEquals(message, new ViewList().getMessage());
+        assertion.assertEquals(message, new ViewList().getMessage(), "Message banner");
     }
 
 }
