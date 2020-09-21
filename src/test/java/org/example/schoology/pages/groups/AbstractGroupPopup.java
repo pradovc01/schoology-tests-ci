@@ -1,5 +1,6 @@
 package org.example.schoology.pages.groups;
 
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,16 +33,15 @@ public abstract class AbstractGroupPopup extends AbstractPage {
     @FindBy(css = "#edit-submit")
     protected WebElement submitButton;
 
-    public void fill(final Map<String, String> groupMap) {
-        Map<String, Step> stepMap = new HashMap<>();
-        stepMap.put("name", () -> setName(groupMap.get("name")));
-        stepMap.put("description", () -> setDescription(groupMap.get("description")));
-        stepMap.put("groupCode", () -> setGroupCode(groupMap.get("groupCode")));
-        stepMap.put("privacy", () -> selectPrivacy(groupMap.get("privacy")));
-        stepMap.put("access", () -> selectAccess(groupMap.get("access")));
-        stepMap.put("category", () -> selectCategory(groupMap.get("category")));
+    public void fill(final Map<GroupForm, String> groupMap) {
+        EnumMap<GroupForm, Step> stepMap = new EnumMap<>(GroupForm.class);
+        stepMap.put(GroupForm.NAME, () -> setName(groupMap.get(GroupForm.NAME)));
+        stepMap.put(GroupForm.DESCRIPTION, () -> setDescription(groupMap.get(GroupForm.DESCRIPTION)));
+        stepMap.put(GroupForm.PRIVACY, () -> selectPrivacy(groupMap.get(GroupForm.PRIVACY)));
+        stepMap.put(GroupForm.ACCESS, () -> selectAccess(groupMap.get(GroupForm.ACCESS)));
+        stepMap.put(GroupForm.CATEGORY, () -> selectCategory(groupMap.get(GroupForm.CATEGORY)));
 
-        for (final String keyField : groupMap.keySet()) {
+        for (final GroupForm keyField : groupMap.keySet()) {
             stepMap.get(keyField).execute();
         }
     }

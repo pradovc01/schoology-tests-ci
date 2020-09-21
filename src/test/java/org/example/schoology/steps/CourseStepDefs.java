@@ -9,6 +9,7 @@ import org.example.core.ScenarioContext;
 import org.example.core.ui.SharedDriver;
 import org.example.schoology.pages.Home;
 import org.example.schoology.pages.SubMenu;
+import org.example.schoology.pages.courses.CourseForm;
 import org.example.schoology.pages.courses.Courses;
 import org.example.schoology.pages.courses.CreateCoursePopup;
 import org.example.schoology.pages.courses.EditCoursePopup;
@@ -33,17 +34,17 @@ public class CourseStepDefs {
     }
 
     @And("I create a course with:")
-    public void iCreateACourseWith(final Map<String, String> datatable) {
+    public void iCreateACourseWith(final Map<CourseForm, String> datatable) {
         String menu = Internationalization.getInstance().getValue("menu");
         SubMenu subMenu = home.clickMenu(menu);
         subMenu.clickViewListLink(menu);
         CreateCoursePopup createCoursePopup = this.courses.clickCreateCourseButton();
         createCoursePopup.create(datatable);
-        context.setContext("CourseKey", datatable.get("name"));
+        context.setContext("CourseKey", datatable.get(CourseForm.COURSE_NAME));
     }
 
     @And("I edit the {string} course with:")
-    public void iEditTheCourseWith(final String name, final Map<String, String> datatable) {
+    public void iEditTheCourseWith(final String name, final Map<CourseForm, String> datatable) {
         EditCoursePopup editCoursePopup = courses.clickEditCourse(name);
         courses = editCoursePopup.edit(datatable);
     }

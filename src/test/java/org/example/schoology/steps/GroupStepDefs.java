@@ -9,13 +9,13 @@ import org.example.schoology.pages.Home;
 import org.example.schoology.pages.SubMenu;
 import org.example.schoology.pages.groups.CreateGroupPopup;
 import org.example.schoology.pages.groups.EditGroupPopup;
-import org.example.schoology.pages.groups.Group;
+import org.example.schoology.pages.groups.GroupForm;
 import org.example.schoology.pages.groups.Groups;
 import org.testng.asserts.Assertion;
 
 public class GroupStepDefs {
 
-    private final Groups groups;
+    private Groups groups;
 
     private Assertion assertion;
 
@@ -26,18 +26,18 @@ public class GroupStepDefs {
     }
 
     @And("I create a group with:")
-    public void iCreateAGroupWith(final Map<String, String> datatable) {
+    public void iCreateAGroupWith(final Map<GroupForm, String> datatable) {
         String menu = "Groups";
         SubMenu subMenu = new Home().clickMenu(menu);
         subMenu.clickViewListLink(menu);
         CreateGroupPopup createGroupPopup = this.groups.clickCreateGroupButton();
-        Group group = createGroupPopup.create(datatable);
+        createGroupPopup.create(datatable);
     }
 
     @And("I edit the {string} group with:")
-    public void iEditTheGroupWith(final String name, final Map<String, String> datatable) {
+    public void iEditTheGroupWith(final String name, final Map<GroupForm, String> datatable) {
         EditGroupPopup editGroupPopup = groups.clickEditGroup(name);
-        editGroupPopup.edit(datatable);
+        groups = editGroupPopup.edit(datatable);
     }
 
     @And("I should see a group with {string} as a name")

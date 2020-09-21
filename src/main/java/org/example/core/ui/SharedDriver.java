@@ -8,6 +8,7 @@ public class SharedDriver {
     public SharedDriver() {
         if (DriverFactory.getDriver() == null) {
             WebDriver driver = BrowserFactory.getBrowser(Environment.getInstance().getValue("browser"));
+            driver.manage().window().maximize();
             DriverFactory.addDriver(driver);
         }
     }

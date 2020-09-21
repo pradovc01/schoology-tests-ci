@@ -1,6 +1,6 @@
 package org.example.schoology.pages.courses;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import org.example.core.ui.AbstractPage;
@@ -26,14 +26,14 @@ public abstract class AbstractCoursePopup extends AbstractPage {
     @FindBy(css = "#edit-submit")
     protected WebElement submitButton;
 
-    public void fill(final Map<String, String> courseMap) {
-        Map<String, Step> stepsMap = new HashMap<>();
-        stepsMap.put("name", () -> setName(courseMap.get("name")));
-        stepsMap.put("section", () -> setSection(courseMap.get("section")));
-        stepsMap.put("area", () -> selectSubjectArea(courseMap.get("area")));
-        stepsMap.put("level", () -> selectLevel(courseMap.get("level")));
+    public void fill(final Map<CourseForm, String> courseMap) {
+        EnumMap<CourseForm, Step> stepsMap = new EnumMap<>(CourseForm.class);
+        stepsMap.put(CourseForm.COURSE_NAME, () -> setName(courseMap.get(CourseForm.COURSE_NAME)));
+        stepsMap.put(CourseForm.SECTION_NAME, () -> setSection(courseMap.get(CourseForm.SECTION_NAME)));
+        stepsMap.put(CourseForm.SUBJECT_AREA, () -> selectSubjectArea(courseMap.get(CourseForm.SUBJECT_AREA)));
+        stepsMap.put(CourseForm.LEVEL, () -> selectLevel(courseMap.get(CourseForm.LEVEL)));
 
-        for (final String keyField : courseMap.keySet()) {
+        for (final CourseForm keyField : courseMap.keySet()) {
             stepsMap.get(keyField).execute();
         }
     }

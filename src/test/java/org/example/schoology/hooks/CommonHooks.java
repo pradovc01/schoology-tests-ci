@@ -7,7 +7,7 @@ import org.testng.asserts.SoftAssert;
 
 public class CommonHooks {
 
-    private AssertionGroup assertionGroup;
+    private final AssertionGroup assertionGroup;
 
     public CommonHooks(final AssertionGroup assertionGroup) {
         this.assertionGroup = assertionGroup;

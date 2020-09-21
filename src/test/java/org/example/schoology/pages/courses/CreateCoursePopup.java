@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class CreateCoursePopup extends AbstractCoursePopup {
 
-    public Course create(final Map<String, String> courseMap) {
+    public Course create(final Map<CourseForm, String> courseMap) {
         fill(courseMap);
         submitButton.click();
         return new Course();
