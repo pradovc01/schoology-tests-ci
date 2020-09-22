@@ -2,7 +2,8 @@ package org.example.core.ui;
 
 import org.openqa.selenium.WebDriver;
 
-public abstract class AbstractBrowser {
+@FunctionalInterface
+interface Browser {
 
-    abstract WebDriver init();
+	WebDriver init();
 }

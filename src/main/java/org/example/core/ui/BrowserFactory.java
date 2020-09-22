@@ -8,15 +8,14 @@ import org.openqa.selenium.WebDriver;
 
 public final class BrowserFactory {
 
-    private BrowserFactory() {
-    }
-
-    private static final Map<String, Supplier<AbstractBrowser>> BROWSERS = new HashMap<>();
-
+    private static final Map<String, Supplier<Browser>> BROWSERS = new HashMap<>();
     static {
         BROWSERS.put("chrome", Chrome::new);
         BROWSERS.put("firefox", Firefox::new);
         BROWSERS.put("headless", Headless::new);
+    }
+
+    private BrowserFactory() {
     }
 
     public static WebDriver getBrowser(final String browser) {
