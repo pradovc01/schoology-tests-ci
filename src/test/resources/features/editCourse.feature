@@ -4,13 +4,14 @@ Feature: Courses
   Scenario: Edit a course
     Given I log in as "Instructor01" user
     And I create a course with:
-      | Course Name  | SeleniumWebDriver |
-      | Section Name | New Section       |
-      | Subject Area | Mathematics       |
-      | Level        | Undergraduate     |
+      | Course Name  | Selenium WebDriver Course |
+      | Section Name | New Section               |
+      | Subject Area | Mathematics               |
+      | Level        | Undergraduate             |
     When I navigate to "Courses"
-    And I edit the "SeleniumWebDriver" course with:
+    And I edit the "Selenium WebDriver Course" course with:
       | Section Name | Section Test |
-      | Subject Area    | Science      |
+      | Subject Area | Science      |
     Then I should see the "The section has been updated." message
-    And I should see the "Section Test" section on "SeleniumWebDriver" course item
+    And I should see the "Section Test" section on "Selenium WebDriver Course" course item
+    And I assert all

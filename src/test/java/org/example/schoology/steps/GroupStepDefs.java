@@ -3,6 +3,8 @@ package org.example.schoology.steps;
 import java.util.Map;
 
 import io.cucumber.java.en.And;
+import org.testng.asserts.Assertion;
+
 import org.example.core.AssertionGroup;
 import org.example.core.ui.SharedDriver;
 import org.example.schoology.pages.Home;
@@ -11,7 +13,6 @@ import org.example.schoology.pages.groups.CreateGroupPopup;
 import org.example.schoology.pages.groups.EditGroupPopup;
 import org.example.schoology.pages.groups.GroupForm;
 import org.example.schoology.pages.groups.Groups;
-import org.testng.asserts.Assertion;
 
 public class GroupStepDefs {
 

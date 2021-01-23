@@ -3,11 +3,12 @@ package org.example.schoology.pages.courses;
 import java.util.EnumMap;
 import java.util.Map;
 
-import org.example.core.ui.AbstractPage;
-import org.example.schoology.pages.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+
+import org.example.core.ui.AbstractPage;
+import org.example.schoology.pages.Step;
 
 public abstract class AbstractCoursePopup extends AbstractPage {
 

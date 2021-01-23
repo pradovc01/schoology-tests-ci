@@ -1,10 +1,11 @@
 package org.example.schoology.pages.courses;
 
-import org.example.schoology.pages.ViewList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import org.example.schoology.pages.ViewList;
 
 public class Courses extends ViewList {
 

@@ -2,11 +2,11 @@ package org.example.schoology.pages;
 
 import java.util.concurrent.TimeUnit;
 
-import org.example.core.ui.AbstractPage;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import org.example.core.ui.AbstractPage;
 
 public class Login extends AbstractPage {
 
@@ -30,7 +30,6 @@ public class Login extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-
     // Todo
     public Home loginAs(final String username, final String pass) {
         driver.manage().deleteAllCookies();
@@ -47,8 +46,6 @@ public class Login extends AbstractPage {
             // Changing timeout
             driver.manage().timeouts().implicitlyWait(MIN_IMPLICIT_TIMEOUT, TimeUnit.SECONDS);
             cancelVerifyYourAccountButton.click();
-        } catch (NoSuchElementException e) {
-            // nothing.
         } finally {
             // Restore timeout
             driver.manage().timeouts().implicitlyWait(DEFAULT_IMPLICIT_TIMEOUT, TimeUnit.SECONDS);

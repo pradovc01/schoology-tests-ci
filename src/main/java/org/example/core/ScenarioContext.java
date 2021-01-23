@@ -1,18 +1,11 @@
 package org.example.core;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import org.example.core.ui.AbstractPage;
 
 public class ScenarioContext {
 
     private Map<String, String> context;
-
-    private List<String> contextList;
-
-    private AbstractPage home;
 
     public ScenarioContext() {
         context = new HashMap<>();

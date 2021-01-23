@@ -1,15 +1,17 @@
 package org.example.schoology.hooks;
 
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import org.example.core.AssertionGroup;
+import io.cucumber.java.en.Then;
 import org.testng.asserts.SoftAssert;
+
+import org.example.core.AssertionGroup;
+import org.example.core.ui.SharedDriver;
 
 public class CommonHooks {
 
     private final AssertionGroup assertionGroup;
 
-    public CommonHooks(final AssertionGroup assertionGroup) {
+    public CommonHooks(final SharedDriver sharedDriver, final AssertionGroup assertionGroup) {
         this.assertionGroup = assertionGroup;
     }
 
@@ -18,8 +20,9 @@ public class CommonHooks {
         assertionGroup.setAssertion(new SoftAssert());
     }
 
-    @After(value = "@softAssert")
+    @Then("I assert all")
     public void afterSoftAssert() {
         ((SoftAssert) assertionGroup.getAssertion()).assertAll();
     }
+
 }

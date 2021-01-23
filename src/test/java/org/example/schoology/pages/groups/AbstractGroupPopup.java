@@ -1,14 +1,14 @@
 package org.example.schoology.pages.groups;
 
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.Map;
 
-import org.example.core.ui.AbstractPage;
-import org.example.schoology.pages.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+
+import org.example.core.ui.AbstractPage;
+import org.example.schoology.pages.Step;
 
 public abstract class AbstractGroupPopup extends AbstractPage {
 

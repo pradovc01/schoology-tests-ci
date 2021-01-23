@@ -2,13 +2,14 @@ package org.example.schoology.hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+
 import org.example.core.Internationalization;
 import org.example.core.ScenarioContext;
 import org.example.core.ui.DriverFactory;
-import org.example.schoology.pages.courses.Courses;
-import org.example.schoology.pages.courses.DeleteCoursePopup;
 import org.example.schoology.pages.Home;
 import org.example.schoology.pages.SubMenu;
+import org.example.schoology.pages.courses.Courses;
+import org.example.schoology.pages.courses.DeleteCoursePopup;
 
 public class CourseHooks {
 

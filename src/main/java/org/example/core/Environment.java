@@ -6,7 +6,7 @@ public final class Environment {
 
     private static final Environment INSTANCE = new Environment();
 
-    private DocumentContext jsonContext;
+    private final DocumentContext jsonContext;
 
     private Environment() {
         jsonContext = JsonHelper.getJsonObject("config.json");

@@ -5,5 +5,5 @@ import org.openqa.selenium.WebDriver;
 @FunctionalInterface
 interface Browser {
 
-	WebDriver init();
+    WebDriver init();
 }

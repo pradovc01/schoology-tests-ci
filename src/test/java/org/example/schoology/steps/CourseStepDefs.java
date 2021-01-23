@@ -3,6 +3,8 @@ package org.example.schoology.steps;
 import java.util.Map;
 
 import io.cucumber.java.en.And;
+import org.testng.asserts.Assertion;
+
 import org.example.core.AssertionGroup;
 import org.example.core.Internationalization;
 import org.example.core.ScenarioContext;
@@ -13,7 +15,6 @@ import org.example.schoology.pages.courses.CourseForm;
 import org.example.schoology.pages.courses.Courses;
 import org.example.schoology.pages.courses.CreateCoursePopup;
 import org.example.schoology.pages.courses.EditCoursePopup;
-import org.testng.asserts.Assertion;
 
 public class CourseStepDefs {
 

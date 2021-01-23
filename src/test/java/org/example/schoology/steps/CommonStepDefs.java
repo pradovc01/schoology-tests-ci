@@ -3,6 +3,8 @@ package org.example.schoology.steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.asserts.Assertion;
+
 import org.example.core.AssertionGroup;
 import org.example.core.Environment;
 import org.example.core.ui.SharedDriver;
@@ -10,7 +12,6 @@ import org.example.schoology.pages.Home;
 import org.example.schoology.pages.Login;
 import org.example.schoology.pages.SubMenu;
 import org.example.schoology.pages.ViewList;
-import org.testng.asserts.Assertion;
 
 public class CommonStepDefs {
 
