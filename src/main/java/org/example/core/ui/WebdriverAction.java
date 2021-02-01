@@ -8,9 +8,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebdriverAction {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
-    private WebDriverWait wait;
+    private final WebDriverWait wait;
 
     public WebdriverAction(final WebDriver driver, final WebDriverWait wait) {
         this.driver = driver;
@@ -34,5 +34,11 @@ public class WebdriverAction {
 
     public String getText(final By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
+    }
+
+    public void setValue(final WebElement webElement, final String value) {
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+        webElement.clear();
+        webElement.sendKeys(value);
     }
 }

@@ -6,7 +6,6 @@ import io.cucumber.java.en.And;
 import org.testng.asserts.Assertion;
 
 import org.example.core.AssertionGroup;
-import org.example.core.Internationalization;
 import org.example.core.ScenarioContext;
 import org.example.core.ui.SharedDriver;
 import org.example.schoology.pages.Home;
@@ -36,9 +35,9 @@ public class CourseStepDefs {
 
     @And("I create a course with:")
     public void iCreateACourseWith(final Map<CourseForm, String> datatable) {
-        String menu = Internationalization.getInstance().getValue("menu");
-        SubMenu subMenu = home.clickMenu(menu);
-        subMenu.clickViewListLink(menu);
+        String courses = "Courses";
+        SubMenu subMenu = home.clickMenu(courses);
+        subMenu.clickViewListLink(courses);
         CreateCoursePopup createCoursePopup = this.courses.clickCreateCourseButton();
         createCoursePopup.create(datatable);
         context.setContext("CourseKey", datatable.get(CourseForm.COURSE_NAME));

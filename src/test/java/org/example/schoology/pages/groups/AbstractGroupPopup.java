@@ -47,18 +47,15 @@ public abstract class AbstractGroupPopup extends AbstractPage {
     }
 
     public void setName(final String name) {
-        nameField.clear();
-        nameField.sendKeys(name);
+        action.setValue(nameField, name);
     }
 
     public void setDescription(final String description) {
-        descriptionField.clear();
-        descriptionField.sendKeys(description);
+        action.setValue(descriptionField, description);
     }
 
     public void setGroupCode(final String code) {
-        groupCodeField.clear();
-        groupCodeField.sendKeys(code);
+        action.setValue(groupCodeField, code);
     }
 
     public void selectPrivacy(final String privacy) {

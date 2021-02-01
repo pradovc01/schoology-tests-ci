@@ -3,6 +3,7 @@ package org.example.schoology.runner;
 import java.util.Arrays;
 import java.util.Locale;
 
+import io.cucumber.core.api.TypeRegistry;
 import io.cucumber.core.api.TypeRegistryConfigurer;
 import io.cucumber.datatable.DataTableType;
 import io.cucumber.datatable.TableCellTransformer;
@@ -23,7 +24,7 @@ public class TypeRegistries implements TypeRegistryConfigurer {
      * {@inheritDoc}
      */
     @Override
-    public void configureTypeRegistry(final io.cucumber.core.api.TypeRegistry typeRegistry) {
+    public void configureTypeRegistry(final TypeRegistry typeRegistry) {
         typeRegistry.defineDataTableType(new DataTableType(CourseForm.class,
                 (TableCellTransformer<CourseForm>) cell -> Arrays.stream(CourseForm.values())
                         .filter(e -> e.getName().equalsIgnoreCase(cell)).findFirst().get()));

@@ -5,13 +5,12 @@ import io.cucumber.java.en.Then;
 import org.testng.asserts.SoftAssert;
 
 import org.example.core.AssertionGroup;
-import org.example.core.ui.SharedDriver;
 
 public class CommonHooks {
 
     private final AssertionGroup assertionGroup;
 
-    public CommonHooks(final SharedDriver sharedDriver, final AssertionGroup assertionGroup) {
+    public CommonHooks(final AssertionGroup assertionGroup) {
         this.assertionGroup = assertionGroup;
     }
 

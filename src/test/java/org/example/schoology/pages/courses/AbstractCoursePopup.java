@@ -44,9 +44,7 @@ public abstract class AbstractCoursePopup extends AbstractPage {
     }
 
     private void setSection(final String section) {
-        WebElement sectionField = sectionNameTextField;
-        sectionField.clear();
-        sectionField.sendKeys(section);
+        action.setValue(sectionNameTextField, section);
     }
 
     public void selectSubjectArea(final String area) {

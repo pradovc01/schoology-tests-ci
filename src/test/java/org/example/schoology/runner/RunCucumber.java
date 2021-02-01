@@ -6,16 +6,19 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 
+import org.example.core.Environment;
+
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = "org.example.schoology",
+        glue = "org.example",
         plugin = {"pretty"}
 )
 public class RunCucumber extends AbstractTestNGCucumberTests {
 
     @BeforeTest
     public void setUp() {
-        System.setProperty("dataproviderthreadcount", "1");
+        System.setProperty("dataproviderthreadcount",
+                Environment.getInstance().getValue("threadCount"));
     }
 
     @DataProvider(parallel = true)

@@ -7,24 +7,24 @@ import org.openqa.selenium.WebDriver;
 
 public final class DriverFactory {
 
-    private static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> DRIVERS = new ThreadLocal<>();
 
-    private static List<WebDriver> storedDrivers = new ArrayList<>();
+    private static final List<WebDriver> STORED_DRIVERS = new ArrayList<>();
 
     static {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> storedDrivers.forEach(WebDriver::quit)));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> STORED_DRIVERS.forEach(WebDriver::quit)));
     }
 
     private DriverFactory() {
     }
 
     public static void addDriver(final WebDriver driver) {
-        drivers.set(driver);
-        storedDrivers.add(driver);
+        DRIVERS.set(driver);
+        STORED_DRIVERS.add(driver);
     }
 
     public static WebDriver getDriver() {
-        return drivers.get();
+        return DRIVERS.get();
     }
 
 }
