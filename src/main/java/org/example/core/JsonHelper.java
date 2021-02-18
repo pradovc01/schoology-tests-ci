@@ -14,11 +14,11 @@ import org.json.simple.parser.ParseException;
 
 public final class JsonHelper {
 
-    private JsonHelper() {
-    }
-
     public static final String MSG_NOT_POSSIBLE_TO_READ_JSON =
             "Not possible to read json file";
+
+    private JsonHelper() {
+    }
 
     public static DocumentContext getJsonObject(final String filePath) {
         try (InputStream inputStream = new FileInputStream(filePath)) {

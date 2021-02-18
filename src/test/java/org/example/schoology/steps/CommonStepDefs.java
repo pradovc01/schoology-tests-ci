@@ -1,5 +1,8 @@
 package org.example.schoology.steps;
 
+import java.util.Arrays;
+
+import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,6 +15,8 @@ import org.example.schoology.pages.Home;
 import org.example.schoology.pages.Login;
 import org.example.schoology.pages.SubMenu;
 import org.example.schoology.pages.ViewList;
+import org.example.schoology.pages.courses.CourseForm;
+import org.example.schoology.pages.groups.GroupForm;
 
 public class CommonStepDefs {
 
@@ -21,6 +26,22 @@ public class CommonStepDefs {
 
     public CommonStepDefs(final SharedDriver sharedDriver, final AssertionGroup assertionGroup) {
         assertion = assertionGroup.getAssertion();
+    }
+
+    @DataTableType
+    public CourseForm courseMap(final String courseFormField) {
+        return Arrays.stream(CourseForm.values())
+                .filter(e -> e.getName().equalsIgnoreCase(courseFormField))
+                .findFirst()
+                .orElseThrow();
+    }
+
+    @DataTableType
+    public GroupForm groupMap(final String groupFormField) {
+        return Arrays.stream(GroupForm.values())
+                .filter(e -> e.getName().equalsIgnoreCase(groupFormField))
+                .findFirst()
+                .orElseThrow();
     }
 
     @Given("I log in as {string} user")
