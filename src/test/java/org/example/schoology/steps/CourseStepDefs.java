@@ -7,7 +7,6 @@ import org.testng.asserts.Assertion;
 
 import org.example.core.AssertionGroup;
 import org.example.core.ScenarioContext;
-import org.example.core.ui.SharedDriver;
 import org.example.schoology.pages.Home;
 import org.example.schoology.pages.SubMenu;
 import org.example.schoology.pages.courses.CourseForm;
@@ -25,8 +24,7 @@ public class CourseStepDefs {
 
     private final Assertion assertion;
 
-    public CourseStepDefs(final SharedDriver sharedDriver, final AssertionGroup assertionGroup,
-                          final ScenarioContext context, final Courses courses) {
+    public CourseStepDefs(final AssertionGroup assertionGroup, final ScenarioContext context, final Courses courses) {
         assertion = assertionGroup.getAssertion();
         this.context = context;
         this.home = new Home();

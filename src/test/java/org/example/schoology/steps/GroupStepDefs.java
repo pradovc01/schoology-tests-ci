@@ -6,7 +6,6 @@ import io.cucumber.java.en.And;
 import org.testng.asserts.Assertion;
 
 import org.example.core.AssertionGroup;
-import org.example.core.ui.SharedDriver;
 import org.example.schoology.pages.Home;
 import org.example.schoology.pages.SubMenu;
 import org.example.schoology.pages.groups.CreateGroupPopup;
@@ -20,8 +19,7 @@ public class GroupStepDefs {
 
     private Assertion assertion;
 
-    public GroupStepDefs(final SharedDriver sharedDriver, final AssertionGroup assertionGroup,
-                         final Groups groups) {
+    public GroupStepDefs(final AssertionGroup assertionGroup, final Groups groups) {
         assertion = assertionGroup.getAssertion();
         this.groups = groups;
     }

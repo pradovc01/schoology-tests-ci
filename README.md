@@ -1,9 +1,7 @@
-#demo
-
-[Automation Practice](http://automationpractice.com)
+#Schoology-test
 
 ###Environment requirements
-* Java 8.
+* Java 11+
 * Chrome or Firefox browser.
 * Gradle.
 
