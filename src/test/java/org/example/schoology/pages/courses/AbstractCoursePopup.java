@@ -40,7 +40,7 @@ public abstract class AbstractCoursePopup extends AbstractPage {
     }
 
     public void setName(final String name) {
-        courseNameTextField.sendKeys(name);
+        action.setValue(courseNameTextField, name);
     }
 
     private void setSection(final String section) {

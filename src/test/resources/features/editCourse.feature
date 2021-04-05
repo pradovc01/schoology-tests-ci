@@ -10,8 +10,9 @@ Feature: Courses
       | Level        | Undergraduate             |
     When I navigate to "Courses"
     And I edit the "Selenium WebDriver Course" course with:
-      | Section Name | Section Test |
-      | Subject Area | Science      |
+      | Course Name  | New Selenium WebDriver Course |
+      | Section Name | Section Test                  |
+      | Subject Area | Science                       |
     Then I should see the "The section has been updated." message
-    And I should see the "Section Test" section on "Selenium WebDriver Course" course item
+    And I should see the "Section Test" section on "New Selenium WebDriver Course" course item
     And I assert all

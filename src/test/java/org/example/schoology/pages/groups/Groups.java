@@ -29,9 +29,9 @@ public class Groups extends ViewList {
     }
 
     public DeletePopup clickDeleteGroup(final String groupName) {
-        WebElement courseActionsButton = driver.findElement(By.xpath(String.format(GROUP_ACTIONS_BUTTON, groupName)));
-        action.scrollTo(courseActionsButton);
-        action.jsClick(courseActionsButton);
+        WebElement groupActionsButton = driver.findElement(By.xpath(String.format(GROUP_ACTIONS_BUTTON, groupName)));
+        action.scrollTo(groupActionsButton);
+        action.jsClick(groupActionsButton);
         action.click(deleteOption);
         return new DeletePopup();
     }

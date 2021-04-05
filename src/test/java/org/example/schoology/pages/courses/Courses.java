@@ -40,6 +40,6 @@ public class Courses extends ViewList {
     }
 
     public String getSectionByName(final String courseName) {
-        return driver.findElement(By.xpath(String.format(XPATH_SECTION_BY_NAME, courseName))).getText();
+        return action.getText(driver.findElement(By.xpath(String.format(XPATH_SECTION_BY_NAME, courseName))));
     }
 }

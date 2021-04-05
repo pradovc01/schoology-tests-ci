@@ -46,6 +46,7 @@ public class CourseStepDefs {
     public void iEditTheCourseWith(final String name, final Map<CourseForm, String> datatable) {
         EditCoursePopup editCoursePopup = courses.clickEditCourse(name);
         courses = editCoursePopup.edit(datatable);
+        context.setContext(CourseHooks.COURSE_KEY, datatable.get(CourseForm.COURSE_NAME));
     }
 
     @And("I should see the {string} section on {string} course item")

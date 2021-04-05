@@ -21,7 +21,7 @@ public class GroupStepDefs {
 
     private Groups groups;
 
-    private Assertion assertion;
+    private final Assertion assertion;
 
     public GroupStepDefs(final AssertionGroup assertionGroup, final ScenarioContext context, final Groups groups) {
         assertion = assertionGroup.getAssertion();
@@ -43,6 +43,7 @@ public class GroupStepDefs {
     public void iEditTheGroupWith(final String name, final Map<GroupForm, String> datatable) {
         EditGroupPopup editGroupPopup = groups.clickEditGroup(name);
         groups = editGroupPopup.edit(datatable);
+        context.setContext(GroupHooks.GROUP_KEY, datatable.get(GroupForm.NAME));
     }
 
     @And("I should see a group with {string} as a name")
