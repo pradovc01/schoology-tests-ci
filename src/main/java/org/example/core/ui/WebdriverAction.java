@@ -1,6 +1,7 @@
 package org.example.core.ui;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,6 +26,14 @@ public class WebdriverAction {
     public void click(final By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator))
                 .click();
+    }
+
+    public void jsClick(final WebElement webElement) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", webElement);
+    }
+
+    public void scrollTo(final WebElement webElement) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", webElement);
     }
 
     public String getText(final WebElement webElement) {

@@ -1,5 +1,6 @@
 Feature: Groups
 
+  @deleteGroup
   Scenario: Edit a group
     Given I log in as "Instructor02" user
     And I create a group with:

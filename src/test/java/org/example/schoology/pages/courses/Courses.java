@@ -1,7 +1,6 @@
 package org.example.schoology.pages.courses;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -17,12 +16,6 @@ public class Courses extends ViewList {
     @FindBy(css = "a.create-course-btn")
     private WebElement createCourseButton;
 
-    @FindBy(css = "ul[style=\"display: block;\"] .action-edit")
-    private WebElement editCourse;
-
-    @FindBy(css = "ul[style=\"display: block;\"] .action-delete-link")
-    private WebElement deleteCourse;
-
     public CreateCoursePopup clickCreateCourseButton() {
         createCourseButton.click();
         return new CreateCoursePopup();
@@ -31,27 +24,19 @@ public class Courses extends ViewList {
     public EditCoursePopup clickEditCourse(final String courseName) {
         WebElement courseActionsButton = driver.findElement(By.xpath(String.format(XPATH_COURSE_ACTIONS_BUTTON,
                 courseName)));
-
-        // Scroll
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", courseActionsButton);
-
-        courseActionsButton.click();
-        editCourse.click();
+        action.scrollTo(courseActionsButton);
+        action.jsClick(courseActionsButton);
+        action.click(editOption);
         return new EditCoursePopup();
     }
 
-    public DeleteCoursePopup clickDeleteCourse(final String courseName) {
+    public DeletePopup clickDeleteCourse(final String courseName) {
         WebElement courseActionsButton = driver.findElement(By.xpath(String.format(XPATH_COURSE_ACTIONS_BUTTON,
                 courseName)));
-
-        // Scroll
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", courseActionsButton);
-
-        courseActionsButton.click();
-        deleteCourse.click();
-        return new DeleteCoursePopup();
+        action.scrollTo(courseActionsButton);
+        action.jsClick(courseActionsButton);
+        action.click(deleteOption);
+        return new DeletePopup();
     }
 
     public String getSectionByName(final String courseName) {

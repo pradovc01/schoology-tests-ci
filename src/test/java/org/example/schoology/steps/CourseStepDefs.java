@@ -7,6 +7,7 @@ import org.testng.asserts.Assertion;
 
 import org.example.core.AssertionGroup;
 import org.example.core.ScenarioContext;
+import org.example.schoology.hooks.CourseHooks;
 import org.example.schoology.pages.Home;
 import org.example.schoology.pages.SubMenu;
 import org.example.schoology.pages.courses.CourseForm;
@@ -38,7 +39,7 @@ public class CourseStepDefs {
         subMenu.clickViewListLink(courses);
         CreateCoursePopup createCoursePopup = this.courses.clickCreateCourseButton();
         createCoursePopup.create(datatable);
-        context.setContext("CourseKey", datatable.get(CourseForm.COURSE_NAME));
+        context.setContext(CourseHooks.COURSE_KEY, datatable.get(CourseForm.COURSE_NAME));
     }
 
     @And("I edit the {string} course with:")

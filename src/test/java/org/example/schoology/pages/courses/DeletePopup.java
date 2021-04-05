@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 import org.example.core.ui.AbstractPage;
 
-public class DeleteCoursePopup extends AbstractPage {
+public class DeletePopup extends AbstractPage {
 
     @FindBy(css = "#edit-submit")
     private WebElement deleteButton;

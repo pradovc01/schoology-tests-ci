@@ -10,10 +10,6 @@ import org.example.core.ui.AbstractPage;
 
 public class Login extends AbstractPage {
 
-    // This info should come from config file.
-    public static final int DEFAULT_IMPLICIT_TIMEOUT = 15;
-    public static final int MIN_IMPLICIT_TIMEOUT = 3;
-
     @FindBy(css = "#edit-mail")
     private WebElement usernameTextField;
 

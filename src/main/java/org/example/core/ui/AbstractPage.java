@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage {
 
+    // This info should come from config file.
+    public static final int MIN_IMPLICIT_TIMEOUT = 5;
     public static final int DEFAULT_IMPLICIT_TIMEOUT = 15;
     public static final int EXPLICIT_WAIT_IN_SECONDS = 20;
 
