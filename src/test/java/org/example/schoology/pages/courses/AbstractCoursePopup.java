@@ -2,12 +2,15 @@ package org.example.schoology.pages.courses;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import org.example.core.Environment;
 import org.example.core.ui.AbstractPage;
+import org.example.schoology.Resources;
 import org.example.schoology.pages.Step;
 
 public abstract class AbstractCoursePopup extends AbstractPage {
@@ -26,6 +29,13 @@ public abstract class AbstractCoursePopup extends AbstractPage {
 
     @FindBy(css = "#edit-submit")
     protected WebElement submitButton;
+
+    private final ResourceBundle bundle;
+
+    public AbstractCoursePopup() {
+        super();
+        bundle = ResourceBundle.getBundle(Resources.I18N_COURSE, Environment.getInstance().getLocale());
+    }
 
     public void fill(final Map<CourseForm, String> courseMap) {
         EnumMap<CourseForm, Step> stepsMap = new EnumMap<>(CourseForm.class);
@@ -49,11 +59,11 @@ public abstract class AbstractCoursePopup extends AbstractPage {
 
     public void selectSubjectArea(final String area) {
         Select subjectArea = new Select(subjectAreaDropDown);
-        subjectArea.selectByVisibleText(area);
+        subjectArea.selectByVisibleText(bundle.getString(I18NCourse.getI18nKey(area)));
     }
 
     public void selectLevel(final String level) {
         Select levelField = new Select(levelDropDown);
-        levelField.selectByVisibleText(level);
+        levelField.selectByVisibleText(bundle.getString(I18NCourse.getI18nKey(level)));
     }
 }

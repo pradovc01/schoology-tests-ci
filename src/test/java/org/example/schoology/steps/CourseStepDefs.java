@@ -1,12 +1,15 @@
 package org.example.schoology.steps;
 
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import io.cucumber.java.en.And;
 import org.testng.asserts.Assertion;
 
 import org.example.core.AssertionGroup;
+import org.example.core.Environment;
 import org.example.core.ScenarioContext;
+import org.example.schoology.Resources;
 import org.example.schoology.hooks.CourseHooks;
 import org.example.schoology.pages.Home;
 import org.example.schoology.pages.SubMenu;
@@ -34,9 +37,11 @@ public class CourseStepDefs {
 
     @And("I create a course with:")
     public void iCreateACourseWith(final Map<CourseForm, String> datatable) {
-        String courses = "Courses";
+        final String keyCourses = "courses";
+        String courses = ResourceBundle.getBundle(Resources.I18N_COURSE,
+                Environment.getInstance().getLocale()).getString(keyCourses);
         SubMenu subMenu = home.clickMenu(courses);
-        subMenu.clickViewListLink(courses);
+        subMenu.clickViewListLink(keyCourses);
         CreateCoursePopup createCoursePopup = this.courses.clickCreateCourseButton();
         createCoursePopup.create(datatable);
         context.setContext(CourseHooks.COURSE_KEY, datatable.get(CourseForm.COURSE_NAME));

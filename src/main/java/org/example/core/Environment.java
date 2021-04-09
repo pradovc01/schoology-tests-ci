@@ -1,5 +1,7 @@
 package org.example.core;
 
+import java.util.Locale;
+
 import com.jayway.jsonpath.DocumentContext;
 
 public final class Environment {
@@ -18,6 +20,10 @@ public final class Environment {
 
     public String getValue(final String keyJsonPath) {
         return jsonContext.read(keyJsonPath);
+    }
+
+    public Locale getLocale() {
+        return new Locale(getValue("language"));
     }
 
 }

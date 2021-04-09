@@ -1,6 +1,7 @@
 {
   "browser": "chrome",
   "threadCount": "1",
+  "language": "en",
   "credentials": {
     "Instructor01": {
       "username": "",

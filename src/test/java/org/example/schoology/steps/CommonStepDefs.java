@@ -1,6 +1,7 @@
 package org.example.schoology.steps;
 
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
@@ -11,11 +12,13 @@ import org.testng.asserts.Assertion;
 import org.example.core.AssertionGroup;
 import org.example.core.Environment;
 import org.example.core.ui.SharedDriver;
+import org.example.schoology.Resources;
 import org.example.schoology.pages.Home;
 import org.example.schoology.pages.Login;
 import org.example.schoology.pages.SubMenu;
 import org.example.schoology.pages.ViewList;
 import org.example.schoology.pages.courses.CourseForm;
+import org.example.schoology.pages.courses.I18NCourse;
 import org.example.schoology.pages.groups.GroupForm;
 
 public class CommonStepDefs {
@@ -24,8 +27,12 @@ public class CommonStepDefs {
 
     private Home home;
 
+    private ResourceBundle resourceBundle;
+
     public CommonStepDefs(final SharedDriver sharedDriver, final AssertionGroup assertionGroup) {
         assertion = assertionGroup.getAssertion();
+        resourceBundle = ResourceBundle.getBundle(Resources.I18N_COURSE,
+                Environment.getInstance().getLocale());
     }
 
     @DataTableType
@@ -53,7 +60,7 @@ public class CommonStepDefs {
 
     @When("I navigate to {string}")
     public void iNavigateToCourses(final String menu) {
-        SubMenu subMenu = home.clickMenu(menu);
+        SubMenu subMenu = home.clickMenu(resourceBundle.getString(menu.toLowerCase()));
         // Not put logic
         // for instance: if else, loops read files, handles strings, mathematical operations.
         subMenu.clickViewListLink(menu);
@@ -61,7 +68,8 @@ public class CommonStepDefs {
 
     @Then("I should see the {string} message")
     public void iShouldSeeTheMessage(final String message) {
-        assertion.assertEquals(message, new ViewList().getMessage(), "Message banner");
+        assertion.assertEquals(new ViewList().getMessage(), resourceBundle.getString(I18NCourse.getI18nKey(message)),
+                "Message banner");
     }
 
 }
