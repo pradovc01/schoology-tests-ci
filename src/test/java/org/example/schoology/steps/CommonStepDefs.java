@@ -7,6 +7,7 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.example.schoology.pages.resources.I18NResource;
 import org.testng.asserts.Assertion;
 
 import org.example.core.AssertionGroup;
@@ -20,6 +21,7 @@ import org.example.schoology.pages.ViewList;
 import org.example.schoology.pages.courses.CourseForm;
 import org.example.schoology.pages.courses.I18NCourse;
 import org.example.schoology.pages.groups.GroupForm;
+import org.example.schoology.pages.resources.AddFolderForm;
 
 public class CommonStepDefs {
 
@@ -51,6 +53,14 @@ public class CommonStepDefs {
                 .orElseThrow();
     }
 
+    @DataTableType
+    public AddFolderForm resourceMap(final String addFolderFormField) {
+        return Arrays.stream(AddFolderForm.values())
+                .filter(e -> e.getName().equalsIgnoreCase(addFolderFormField))
+                .findFirst()
+                .orElseThrow();
+    }
+
     @Given("I log in as {string} user")
     public void iLogInAsUser(final String account) {
         Login login = new Login();
@@ -69,6 +79,14 @@ public class CommonStepDefs {
     @Then("I should see the {string} message")
     public void iShouldSeeTheMessage(final String message) {
         assertion.assertEquals(new ViewList().getMessage(), resourceBundle.getString(I18NCourse.getI18nKey(message)),
+                "Message banner");
+    }
+
+    @Then("I should see the {string} message in Resources")
+    public void iShouldSeeTheMessageInResources(final String message) {
+        resourceBundle = ResourceBundle.getBundle(Resources.I18N_RESOURCE,
+                Environment.getInstance().getLocale());
+        assertion.assertEquals(new ViewList().getMessage(), resourceBundle.getString(I18NResource.getI18nKey(message)),
                 "Message banner");
     }
 

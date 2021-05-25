@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import org.example.core.ui.AbstractPage;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ViewList extends AbstractPage {
 
@@ -18,6 +19,10 @@ public class ViewList extends AbstractPage {
 
     public String getMessage() {
         return action.getText(messages);
+    }
+
+    public void waitForMessageToBeHidden() {
+        wait.until(ExpectedConditions.invisibilityOf(messages));
     }
 
 }
